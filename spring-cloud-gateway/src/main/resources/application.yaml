@@ -1,0 +1,39 @@
+server:
+  port: 8040
+  error:
+    include-message: always
+    include-binding-errors: always
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8090/eureka/
+
+spring:
+  cloud:
+    gateway:
+      routes:
+        - id: Transaction
+          uri: http://localhost:8081/
+          predicates:
+            - Path=/transaction/**
+          filters:
+            - StripPrefix=1
+        - id: Personal
+          uri: http://localhost:8082/
+          predicates:
+            - Path=/personal/**
+          filters:
+            - StripPrefix=1
+        - id: Enterprise
+          uri: http://localhost:8083/
+          predicates:
+            - Path=/enterprise/**
+          filters:
+            - StripPrefix=1
+        - id: Product
+          uri: http://localhost:8084/
+          predicates:
+            - Path=/product/**
+          filters:
+            - StripPrefix=1
