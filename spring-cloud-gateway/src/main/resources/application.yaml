@@ -10,6 +10,8 @@ eureka:
       defaultZone: http://localhost:8090/eureka/
 
 spring:
+  application:
+    name: "Api-Gateway"
   cloud:
     gateway:
       routes:
@@ -35,5 +37,11 @@ spring:
           uri: http://localhost:8084/
           predicates:
             - Path=/product/**
+          filters:
+            - StripPrefix=1
+        - id: Card
+          uri: http://localhost:8085/
+          predicates:
+            - Path=/card/**
           filters:
             - StripPrefix=1
