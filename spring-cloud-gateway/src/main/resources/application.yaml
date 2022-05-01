@@ -45,3 +45,9 @@ spring:
             - Path=/card/**
           filters:
             - StripPrefix=1
+        - id: Yanki
+          uri: http://localhost:8086/
+          predicates:
+              - Path=/yanki/**
+          filters:
+              - StripPrefix=1
