@@ -1,0 +1,28 @@
+version: '3.8'
+
+services:
+  configserver:
+    build: 
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - 8888:8888
+    networks:
+      - default
+      - nttdata-net
+  eureka:
+    build:
+      context: D:\Git2\Proyecto\config-server-main\eureka-server
+      dockerfile: Dockerfile
+    ports:
+      - 8090:8090
+    networks:
+      - default
+      - nttdata-net
+
+networks:
+  default: 
+    driver: bridge
+  nttdata-net:
+    external: true
+      
