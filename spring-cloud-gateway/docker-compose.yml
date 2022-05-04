@@ -1,0 +1,18 @@
+version: '3.8'
+
+services:
+  gatewayapi:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - 8040:8040
+    networks:
+      - default
+      - nttdata-net
+networks:
+  default: 
+    driver: bridge
+  nttdata-net:
+    external: true
+

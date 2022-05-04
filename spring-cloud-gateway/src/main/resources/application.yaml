@@ -7,7 +7,7 @@ server:
 eureka:
   client:
     serviceUrl:
-      defaultZone: http://localhost:8090/eureka/
+      defaultZone: http://eureka:8090/eureka/
 
 spring:
   application:
@@ -16,37 +16,37 @@ spring:
     gateway:
       routes:
         - id: Transaction
-          uri: http://localhost:8081/
+          uri: http://transactionapi:8081/
           predicates:
             - Path=/transaction/**
-          filters:
+          filters:c
             - StripPrefix=1
         - id: Personal
-          uri: http://localhost:8082/
+          uri: http://personalapi:8082/
           predicates:
             - Path=/personal/**
           filters:
             - StripPrefix=1
         - id: Enterprise
-          uri: http://localhost:8083/
+          uri: http://enterpriseapi:8083/
           predicates:
             - Path=/enterprise/**
           filters:
             - StripPrefix=1
         - id: Product
-          uri: http://localhost:8084/
+          uri: http://productapi:8084/
           predicates:
             - Path=/product/**
           filters:
             - StripPrefix=1
         - id: Card
-          uri: http://localhost:8085/
+          uri: http://cardsapi:8085/
           predicates:
             - Path=/card/**
           filters:
             - StripPrefix=1
         - id: Yanki
-          uri: http://localhost:8086/
+          uri: http://yankiapi:8086/
           predicates:
               - Path=/yanki/**
           filters:
